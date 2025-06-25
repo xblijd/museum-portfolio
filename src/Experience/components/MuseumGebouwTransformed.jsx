@@ -7,9 +7,11 @@ Files: MuseumGebouwTransformed.glb [1.44MB] > C:\Users\xav\Downloads\MuseumGebou
 import React from 'react'
 import { useGLTF } from '@react-three/drei'
 import useGLTFWithKTX2 from '../utils/useGLTFWithKTX'
+import { convertMaterialsToMeshBasicMaterial } from '../utils/convertMaterial'
 
 export default function Model(props) {
   const { nodes, materials } = useGLTFWithKTX2('/MuseumGebouwTransformed-transformed.glb')
+  convertMaterialsToMeshBasicMaterial(materials)
   return (
     <group {...props} dispose={null}>
       <group position={[-52.474, 36.832, 10.909]} rotation={[0, 0.01, Math.PI]}>

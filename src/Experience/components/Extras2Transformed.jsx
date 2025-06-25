@@ -6,10 +6,12 @@ Files: Extras2Transformed.glb [5.11MB] > C:\Users\xav\Desktop\Minor\Compressed G
 
 import React from 'react'
 import { useGLTF } from '@react-three/drei'
-import useGLTFWithKTX2  from '../utils/useGLTFWithKTX'
+import useGLTFWithKTX2 from '../utils/useGLTFWithKTX'
+import { convertMaterialsToMeshBasicMaterial } from '../utils/convertMaterial'
 
 export default function Model(props) {
   const { nodes, materials } = useGLTFWithKTX2('/Extras2Transformed-transformed.glb')
+  convertMaterialsToMeshBasicMaterial(materials)
   return (
     <group {...props} dispose={null}>
       <mesh geometry={nodes.Moss.geometry} material={materials.Moss} />

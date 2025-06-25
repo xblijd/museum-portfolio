@@ -7,9 +7,11 @@ Files: GroundNorthTransformed.glb [2.45MB] > C:\Users\xav\Desktop\Minor\Compress
 import React from 'react'
 import { useGLTF } from '@react-three/drei'
 import useGLTFWithKTX2  from '../utils/useGLTFWithKTX'
+import { convertMaterialsToMeshBasicMaterial } from '../utils/convertMaterial'
 
 export default function Model(props) {
   const { nodes, materials } = useGLTFWithKTX2('/GroundNorthTransformed-transformed.glb')
+  convertMaterialsToMeshBasicMaterial(materials)
   return (
     <group {...props} dispose={null}>
       <mesh geometry={nodes.Grass_dirt_north.geometry} material={materials.Grass_dirt_north} />

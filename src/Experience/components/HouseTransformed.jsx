@@ -6,6 +6,7 @@ Files: HouseTransformed.glb [1.23MB] > C:\Users\xav\Desktop\Minor\Compressed GLB
 
 import React from 'react'
 import useGLTFWithKTX2 from '../utils/useGLTFWithKTX'
+import { convertMaterialsToMeshBasicMaterial } from '../utils/convertMaterial'
 
 export default function Model(props) {
   const { nodes, materials } = useGLTFWithKTX2('/HouseTransformed-transformed.glb')

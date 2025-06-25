@@ -1,19 +1,19 @@
 import { MeshBasicMaterial } from 'three';
 
 
-export const convertMaterialsToMeshBasicMaterial = (material) =>{
-    Object.keys(material).forEach((materialKey) => {
+export const convertMaterialsToMeshBasicMaterial = (materials, alphaTestValue = 0.5) =>{
+    Object.keys(materials).forEach((materialKey) => {
         const material = materials[materialKey]
 
-        if(material.emmisiveMap){
+        if(material.emissiveMap){
             materials[materialKey] = new MeshBasicMaterial({
-                map: material.emmisiveMap,
+                map: material.emissiveMap,
         });
     } else {
         materials[materialKey] = new MeshBasicMaterial({
             map: material.map,
             transparent: true,
-            alphaTest: 0.5,
+            alphaTest: alphaTestValue,
             });
         }
     });

@@ -7,9 +7,12 @@ Files: CampfireTransformed.glb [937.39KB] > C:\Users\xav\Desktop\Minor\Compresse
 import React from 'react'
 import { useGLTF } from '@react-three/drei'
 import useGLTFWithKTX2  from '../utils/useGLTFWithKTX'
+import { convertMaterialsToMeshBasicMaterial } from '../utils/convertMaterial'
+
 
 export default function Model(props) {
   const { nodes, materials } = useGLTFWithKTX2('/CampfireTransformed-transformed.glb')
+  convertMaterialsToMeshBasicMaterial(materials)
   return (
     <group {...props} dispose={null}>
       <mesh geometry={nodes['minecraft_block-campfire_fire'].geometry} material={materials.campfire_fire} />

@@ -7,9 +7,11 @@ Files: AzaleaTransformed.glb [5.33MB] > C:\Users\xav\Desktop\Minor\Compressed GL
 import React from 'react'
 import { useGLTF } from '@react-three/drei'
 import useGLTFWithKTX2  from '../utils/useGLTFWithKTX'
+import { convertMaterialsToMeshBasicMaterial } from '../utils/convertMaterial'
 
 export default function Model(props) {
   const { nodes, materials } = useGLTFWithKTX2('/AzaleaTransformed-transformed.glb')
+  convertMaterialsToMeshBasicMaterial(materials)
   return (
     <group {...props} dispose={null}>
       <mesh geometry={nodes.Azalea_Leaves.geometry} material={materials['minecraft_block-flowering_azalea_leaves']} />

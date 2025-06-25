@@ -7,9 +7,11 @@ Files: ExtrasTransformed.glb [3.64MB] > C:\Users\xav\Desktop\Minor\Compressed GL
 import React from 'react'
 import { useGLTF } from '@react-three/drei'
 import useGLTFWithKTX2  from '../utils/useGLTFWithKTX'
+import { convertMaterialsToMeshBasicMaterial } from '../utils/convertMaterial'
 
 export default function Model(props) {
   const { nodes, materials } = useGLTFWithKTX2('/ExtrasTransformed-transformed.glb')
+  convertMaterialsToMeshBasicMaterial(materials)
   return (
     <group {...props} dispose={null}>
       <mesh geometry={nodes.Extras_1.geometry} material={materials.bee_nest_side} />

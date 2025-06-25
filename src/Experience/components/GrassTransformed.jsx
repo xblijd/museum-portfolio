@@ -7,9 +7,13 @@ Files: GrassTransformed.glb [5.87MB] > C:\Users\xav\Desktop\Minor\Compressed GLB
 import React from 'react'
 import { useGLTF } from '@react-three/drei'
 import useGLTFWithKTX2  from '../utils/useGLTFWithKTX'
+import { convertMaterialsToMeshBasicMaterial } from '../utils/convertMaterial'
 
 export default function Model(props) {
   const { nodes, materials } = useGLTFWithKTX2('/GrassTransformed-transformed.glb')
+
+  convertMaterialsToMeshBasicMaterial(materials, 0.8)
+
   return (
     <group {...props} dispose={null}>
       <mesh geometry={nodes.short_grass.geometry} material={materials['minecraft_block-short_grass.001']} />

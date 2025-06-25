@@ -1,6 +1,6 @@
-import { React, useRef} from 'react'
+import { React, Suspense, useRef} from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
-import { CameraControls } from '@react-three/drei'
+import { CameraControls, Environment, View } from '@react-three/drei'
 
 import House from './components/HouseTransformed'
 import OakTrees from './components/OakTreesTransformed'
@@ -38,13 +38,28 @@ const Experience = () => {
           }}>  
 
         <CameraControls ref = {controls}/>
-        <mesh>
+
+
+        {/* <mesh>
             <boxGeometry/>
             <meshStandardMaterial/>
         </mesh>
-        <directionalLight position={[0, 0, 5]} color ="pink"/>
-        <Scene controls={controls} />
+        <directionalLight position={[0, 0, 5]} color ="red"/> */}
+        <Environment 
+        background={true}
+        files={[
+          '/cubemap/px.webp', 
+          '/cubemap/nx.webp', 
+          '/cubemap/py.webp', 
+          '/cubemap/ny.webp', 
+          '/cubemap/pz.webp', 
+          '/cubemap/nz.webp'
+          ]} 
+        />
 
+        <Scene controls={controls} />
+        <ambientLight intensity={5} />
+        <Suspense fallback={null}>
         <Azalea/>
         <Campfire/>
         <Extra/>
@@ -55,11 +70,11 @@ const Experience = () => {
         <GroundMiddle/>
         <GroundSouth/>
         <Museum/>
-
         <House/>
         <OakTrees/>
         <CherryTrees/>
         <Bridge/>
+        </Suspense>
       </Canvas>
     </>
   )

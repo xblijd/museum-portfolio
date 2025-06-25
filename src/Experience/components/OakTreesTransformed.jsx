@@ -7,9 +7,11 @@ Files: OakTreesTransformed.glb [5.09MB] > C:\Users\xav\Desktop\Minor\Compressed 
 import React from 'react'
 import { useGLTF } from '@react-three/drei'
 import useGLTFWithKTX2  from '../utils/useGLTFWithKTX'
+import { convertMaterialsToMeshBasicMaterial } from '../utils/convertMaterial'
 
 export default function Model(props) {
   const { nodes, materials } = useGLTFWithKTX2('/OakTreesTransformed-transformed.glb')
+  convertMaterialsToMeshBasicMaterial(materials)
   return (
     <group {...props} dispose={null}>
       <mesh geometry={nodes.Oak_Trees_1.geometry} material={materials.Oak_tree_logs} />

@@ -7,9 +7,11 @@ Files: CherryTreesTransformed.glb [11.31MB] > C:\Users\xav\Desktop\Minor\Compres
 import React from 'react'
 import { useGLTF } from '@react-three/drei'
 import useGLTFWithKTX2  from '../utils/useGLTFWithKTX'
+import { convertMaterialsToMeshBasicMaterial } from '../utils/convertMaterial'
 
 export default function Model(props) {
   const { nodes, materials } = useGLTFWithKTX2('/CherryTreesTransformed-transformed.glb')
+  convertMaterialsToMeshBasicMaterial(materials)
   return (
     <group {...props} dispose={null}>
       <mesh geometry={nodes.Cherry_Trees_north_1.geometry} material={materials.Cherry_Trees_north_leaves} />

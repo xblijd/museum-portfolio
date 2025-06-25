@@ -7,9 +7,11 @@ Files: BridgeTransformed.glb [2.4MB] > C:\Users\xav\Desktop\Minor\Compressed GLB
 import React, { use } from 'react'
 import { useGLTF } from '@react-three/drei'
 import useGLTFWithKTX2  from '../utils/useGLTFWithKTX'
+import { convertMaterialsToMeshBasicMaterial } from '../utils/convertMaterial'
 
 export default function Model(props) {
   const { nodes, materials } = useGLTFWithKTX2('/BridgeTransformed-transformed.glb')
+  convertMaterialsToMeshBasicMaterial(materials)
   return (
     <group {...props} dispose={null}>
       <mesh geometry={nodes['minecraft_block-lantern002'].geometry} material={materials.Mangrove_trapdoor} />
