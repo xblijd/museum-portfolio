@@ -15,6 +15,7 @@ import Grass from './components/GrassTransformed'
 import GroundNorth from './components/GroundNorthTransformed'
 import GroundMiddle from './components/GroundMiddleTransformed'
 import GroundSouth from './components/GroundSouthTransformed'
+import Museum from './components/MuseumGebouwTransformed'
 
 const Scene = ({controls}) => {
     useFrame(() => {
@@ -41,7 +42,7 @@ const Experience = () => {
             <boxGeometry/>
             <meshStandardMaterial/>
         </mesh>
-        <directionalLight position={[0, 0, 5]} color ="red"/>
+        <directionalLight position={[0, 0, 5]} color ="pink"/>
         <Scene controls={controls} />
 
         <Azalea/>
@@ -53,6 +54,7 @@ const Experience = () => {
         <GroundNorth/>
         <GroundMiddle/>
         <GroundSouth/>
+        <Museum/>
 
         <House/>
         <OakTrees/>
