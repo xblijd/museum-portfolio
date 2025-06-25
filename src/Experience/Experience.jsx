@@ -17,7 +17,8 @@ import Grass from './components/GrassTransformed'
 import GroundNorth from './components/GroundNorthTransformed'
 import GroundMiddle from './components/GroundMiddleTransformed'
 import GroundSouth from './components/GroundSouthTransformed'
-import Museum from './components/MuseumGebouwTransformed'
+import MuseumInterior from './components/MuseumInteriorTransformed'
+import MuseumExterior from './components/MuseumExteriorTransformed'
 
 const CameraHelper = ({cameraRef}) => {
   useHelper(cameraRef, THREE.CameraHelper)
@@ -25,7 +26,7 @@ const CameraHelper = ({cameraRef}) => {
   return null;
 }
 
-const DebugCurve = ({curve})
+// const DebugCurve = ({curve})
 
 const Scene = ({camera}) => {
 
@@ -36,12 +37,12 @@ const Scene = ({camera}) => {
   ])
 
     useFrame(() => {
-      if(camera){
-        console.log("position")
-        console.log(camera.current.position)
-        console.log("rotation")
-        console.log(camera.current.rotation)
-      }
+      // if(camera){
+      //   console.log("position")
+      //   console.log(camera.current.position)
+      //   console.log("rotation")
+      //   console.log(camera.current.rotation)
+      // }
     })
 return (<>
      <Environment 
@@ -67,11 +68,12 @@ return (<>
         <GroundNorth/>
         <GroundMiddle/>
         <GroundSouth/>
-        <Museum/>
         <House/>
         <OakTrees/>
         <CherryTrees/>
         <Bridge/>
+        <MuseumInterior/>
+        <MuseumExterior/>
       </Suspense>
     </>
   )
